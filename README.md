@@ -1,12 +1,16 @@
 # moneypit-power-monitor
 
-Used to monitor overall power usage for our crypto mine, which is supplied by 277 volt 3-phase this is transformed to 220V single phase (for miners) / 120V (for supporting devices).
+Used to monitor overall power usage for our crypto mine, which is supplied by 277 volt 3-phase that is transformed to 220V single phase (for miners) / 120V (for supporting devices).
 
 Designed to run on a Raspberry Pi W (w/ RASPBIAN LITE v2.9) with the following sensors / controls:
 
 - ADS1115 16-Bit ADC - 4 Channel with Programmable Gain Amplifier  (https://www.adafruit.com/product/1085?gclid=EAIaIQobChMIjoDv3_ak3gIVhrbACh0_vAzBEAYYAiABEgLh0vD_BwE)
 
 - [QTY 3] YHDC SCT036TS-D Split Core Current Transformer Sensor Input 400A Output 5V Black (http://en.yhdc.com/product/SCT036TS-D-379.html)
+
+Each current sensor is polled periodically (based upon config setting) and the values are stored in REDIS and available by a single API endpoint and simple UI for review of current state of power usage.
+
+Power usage is also indexed in Elasticsearch (in batches based upon config setting).
 
 
 ## Dependencies
@@ -113,6 +117,10 @@ Designed to run on a Raspberry Pi W (w/ RASPBIAN LITE v2.9) with the following s
 ```
 sudo reboot
 ```
+
+## UI
+
+`http://[hostname]:3000/`
 
 ## APIs
 

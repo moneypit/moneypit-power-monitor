@@ -1,0 +1,47 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "moneypit-fan-controller",
+    "version": ".1",
+    "title": "moneypit-fan-controller"
+  },
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/config": {
+      "get": {
+        "tags": [
+          "config"
+        ],
+        "summary": "Fetch controller config",
+        "operationId": "config",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/power": {
+      "get": {
+        "tags": [
+          "power"
+        ],
+        "summary": "Fetch power usage",
+        "operationId": "power",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  }
+}

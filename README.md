@@ -34,10 +34,6 @@ Power usage is also indexed in Elasticsearch (in batches based upon config setti
    `sudo apt-get install npm`
    `sudo apt-get install nodejs`
 
-- PHP CLI / Curl
-   `sudo apt-get install php7.0-cli`
-   `sudo apt-get install php7.0-curl`
-
 - Python library for ADS1115 (recommend installing from source)
   `https://github.com/adafruit/Adafruit_Python_ADS1x15`
 
@@ -53,13 +49,8 @@ Power usage is also indexed in Elasticsearch (in batches based upon config setti
 
 - Rename `config_sample.json` to `config.json`
 
-- Update config
+- Update config to change elasticsearch host and elasticsearch index name (if necessary).
 
-```
-
-
-
-```
 
 - Enable `redis-server` service is start on reboot
 
@@ -92,26 +83,23 @@ Power usage is also indexed in Elasticsearch (in batches based upon config setti
 	# Start moneypit-power-monitor node app / api
 	sudo /usr/bin/npm start --cwd /home/pi/moneypit-power-monitor --prefix /home/pi/moneypit-power-monitor &
 
+  # Start power monitoring script
   sudo /usr/bin/python /home/pi/moneypit-power-monitor/scripts/fetch-power.py /home/pi/moneypit-power-monitor/config.json &
 
 	exit 0
 
 ```
 
-- From within the `./moneypit-fan-controller-folder` install PHP / Node dependencies
+- From within the `./moneypit-fan-controller-folder` install Node dependencies
 
   ```
-   $ wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php -- --quiet
-   $ php composer.phar install
    $ npm install
   ```
 
 - Setup the following cron jobs:
 
 ```
-
 * * * * * python /home/pi/moneypit-power-monitor/scripts/post-power.py /home/pi/moneypit-power-monitor/config.json
-
 ```
 
 - Reboot the device to start processes

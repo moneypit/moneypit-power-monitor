@@ -110,6 +110,8 @@ Power usage is also indexed in Elasticsearch (in batches based upon config setti
 
 ```
 
+* * * * * python /home/pi/moneypit-power-monitor/scripts/post-power.py /home/pi/moneypit-power-monitor/config.json
+
 ```
 
 - Reboot the device to start processes

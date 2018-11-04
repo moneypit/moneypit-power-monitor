@@ -2,6 +2,8 @@
 
 Used to monitor overall power usage for our crypto mine, which is supplied by 277 volt 3-phase that is transformed to 220V single phase (for miners) / 120V (for supporting devices).
 
+<img src="https://raw.githubusercontent.com/moneypit/moneypit-power-monitor/develop/pics/IMG_0906.jpeg" width=500></img>
+
 Designed to run on a Raspberry Pi W (w/ RASPBIAN LITE v2.9) with the following sensors / controls:
 
 - ADS1115 16-Bit ADC - 4 Channel with Programmable Gain Amplifier  (https://www.adafruit.com/product/1085?gclid=EAIaIQobChMIjoDv3_ak3gIVhrbACh0_vAzBEAYYAiABEgLh0vD_BwE)
@@ -12,6 +14,7 @@ Each current sensor is polled periodically (based upon config setting) and the v
 
 Power usage is also indexed in Elasticsearch (in batches based upon config setting).
 
+> Additional pics available in `./pics` folder
 
 ## Dependencies
 >

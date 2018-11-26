@@ -93,7 +93,7 @@ Power usage is also indexed in Elasticsearch (in batches based upon config setti
 
 ```
 
-- From within the `./moneypit-fan-controller-folder` install Node dependencies
+- From within the `./moneypit-power-monitor` folder install Node dependencies
 
   ```
    $ npm install

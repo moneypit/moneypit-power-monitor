@@ -1,0 +1,33 @@
+{
+  "device": "moneypit-power-monitor",
+  "location": "moneypitmine",
+  "elasticsearch": {
+    "hosts": [
+      "https://elastic:xxxx@0xxx.us-east-1.aws.found.io:9243"
+    ],
+    "index": "mp-power-test",
+    "bulk_post_count": 120
+  },
+  "redis": {
+    "host": "localhost",
+    "port": "6379"
+  },
+  "polling_interval_in_seconds": 1,
+  "current_sensors": [
+    {
+      "adc_channel": 0,
+      "adc_reading_per_amp_constant": 0.01500045778,
+      "volts_constant": 120
+    },
+    {
+      "adc_channel": 1,
+      "adc_reading_per_amp_constant": 0.01500045778,
+      "volts_constant": 120
+    },
+    {
+      "adc_channel": 2,
+      "adc_reading_per_amp_constant": 0.01500045778,
+      "volts_constant": 120
+    }
+  ]
+}

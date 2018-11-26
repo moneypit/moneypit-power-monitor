@@ -2,6 +2,8 @@
 
 Used to monitor overall power usage for our crypto mine, which is supplied by 277 volt 3-phase that is transformed to 220V single phase (for miners) / 120V (for supporting devices).
 
+<img src="https://raw.githubusercontent.com/moneypit/moneypit-power-monitor/develop/pics/IMG_0906.jpeg" width=500></img>
+
 Designed to run on a Raspberry Pi W (w/ RASPBIAN LITE v2.9) with the following sensors / controls:
 
 - ADS1115 16-Bit ADC - 4 Channel with Programmable Gain Amplifier  (https://www.adafruit.com/product/1085?gclid=EAIaIQobChMIjoDv3_ak3gIVhrbACh0_vAzBEAYYAiABEgLh0vD_BwE)
@@ -12,6 +14,7 @@ Each current sensor is polled periodically (based upon config setting) and the v
 
 Power usage is also indexed in Elasticsearch (in batches based upon config setting).
 
+> Additional pics available in `./pics` folder
 
 ## Dependencies
 >
@@ -34,10 +37,6 @@ Power usage is also indexed in Elasticsearch (in batches based upon config setti
    `sudo apt-get install npm`
    `sudo apt-get install nodejs`
 
-- PHP CLI / Curl
-   `sudo apt-get install php7.0-cli`
-   `sudo apt-get install php7.0-curl`
-
 - Python library for ADS1115 (recommend installing from source)
   `https://github.com/adafruit/Adafruit_Python_ADS1x15`
 
@@ -53,13 +52,8 @@ Power usage is also indexed in Elasticsearch (in batches based upon config setti
 
 - Rename `config_sample.json` to `config.json`
 
-- Update config
+- Update config to change elasticsearch host and elasticsearch index name (if necessary).
 
-```
-
-
-
-```
 
 - Enable `redis-server` service is start on reboot
 
@@ -92,24 +86,23 @@ Power usage is also indexed in Elasticsearch (in batches based upon config setti
 	# Start moneypit-power-monitor node app / api
 	sudo /usr/bin/npm start --cwd /home/pi/moneypit-power-monitor --prefix /home/pi/moneypit-power-monitor &
 
+  # Start power monitoring script
   sudo /usr/bin/python /home/pi/moneypit-power-monitor/scripts/fetch-power.py /home/pi/moneypit-power-monitor/config.json &
 
 	exit 0
 
 ```
 
-- From within the `./moneypit-fan-controller-folder` install PHP / Node dependencies
+- From within the `./moneypit-fan-controller-folder` install Node dependencies
 
   ```
-   $ wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php -- --quiet
-   $ php composer.phar install
    $ npm install
   ```
 
 - Setup the following cron jobs:
 
 ```
-
+* * * * * python /home/pi/moneypit-power-monitor/scripts/post-power.py /home/pi/moneypit-power-monitor/config.json
 ```
 
 - Reboot the device to start processes
